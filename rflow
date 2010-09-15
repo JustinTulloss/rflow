@@ -12,6 +12,7 @@ args=$@
 function pull {
     git checkout master
     git pull upstream master
+    # TODO: submodule update has to be run from repo root
     git submodule update
 }
 
