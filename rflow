@@ -29,9 +29,21 @@ function merge {
     fi
     pull
     git checkout "$args"
+    if [ "$?" -ne "0" ] ; then
+        exit -1
+    fi
     git rebase master
+    if [ "$?" -ne "0" ] ; then
+        exit -1
+    fi
     git checkout master
+    if [ "$?" -ne "0" ] ; then
+        exit -1
+    fi
     git merge "$args"
+    if [ "$?" -ne "0" ] ; then
+        exit -1
+    fi
     git branch -d "$args"
 }
 
